@@ -108,7 +108,6 @@ VALUES
     ('Поэзия', 'Стихотворные произведения'),
     ('Детектив', 'Произведения о расследовании преступлений');
 
--- Заполняем книги (с pages, но без publisher_id)
 INSERT INTO Book (title, isbn, publication_year, shelf_location, pages)
 VALUES
     ('Война и мир', '978-5-699-12014-7', 2010, 'A15', 1225),
