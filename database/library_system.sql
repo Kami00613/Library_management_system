@@ -145,10 +145,45 @@ WHERE reader_id = 3 AND book_id = 3;
 UPDATE Reservation SET
                        reservation_date = '2025-03-01'
 WHERE reader_id = 5 AND book_id = 6;
-<<<<<<< HEAD
 
 ALTER TABLE Book
     ADD COLUMN publisher_id INT REFERENCES Publisher(publisher_id);
 
-=======
->>>>>>> 5f25f40050fa11a223fa057dc8ba512c83e9f62c
+
+--нормализация
+CREATE TABLE Country (
+                         country_id SERIAL PRIMARY KEY,
+                         name VARCHAR(105) UNIQUE NOT NULL
+);
+
+ALTER TABLE Author
+    DROP COLUMN country,
+    ADD COLUMN country_id INT REFERENCES Country(country_id);
+
+CREATE TABLE BookAuthor (
+                            book_id INT REFERENCES Book(book_id),
+                            author_id INT REFERENCES Author(author_id),
+                            PRIMARY KEY (book_id, author_id)
+);
+
+CREATE TABLE BookGenre (
+                           book_id INT REFERENCES Book(book_id),
+                           genre_id INT REFERENCES Genre(genre_id),
+                           PRIMARY KEY (book_id, genre_id)
+);
+
+CREATE TABLE Address (
+                         address_id SERIAL PRIMARY KEY,
+                         street VARCHAR(200),
+                         city VARCHAR(100),
+                         postal_code VARCHAR(20),
+                         country_id INT REFERENCES Country(country_id)
+);
+
+ALTER TABLE Publisher
+    DROP COLUMN address,
+    ADD COLUMN address_id INT REFERENCES Address(address_id);
+
+ALTER TABLE Reader
+    DROP COLUMN address,
+    ADD COLUMN address_id INT REFERENCES Address(address_id);
