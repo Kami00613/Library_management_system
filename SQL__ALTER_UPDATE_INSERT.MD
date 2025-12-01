@@ -94,9 +94,9 @@ ALTER TABLE Reader ADD COLUMN library_card_number VARCHAR(20) UNIQUE;
 --ограничение на дату публикации
 ALTER TABLE Book ADD CONSTRAINT publication_year_check
 CHECK (publication_year >= 1000 AND publication_year <= EXTRACT(YEAR FROM CURRENT_DATE));
-![img_7.png](img_7.png)
-![img_8.png](img_8.png)
-![img_9.png](img_9.png)
+![img_7.png](img/img_7.png)
+![img_8.png](img/img_8.png)
+![img_9.png](img/img_9.png)
 -- INSERT
 
 INSERT INTO Reader (name, email, phone_number, registration_date, address, birth_date, library_card_number)
@@ -107,7 +107,7 @@ VALUES
 ('Алексей Шаяхметов', 'alex.shayahmet@gmail.com', '+79456789012', '2020-06-18', 'г. Новосибирск, пр. Дзержинского, д. 7', '2011-02-14', 'LR1004'),
 ('Екатерина Смирнова', 'ekaterinasm@yandex.ru', '+79567890123', '2025-07-05', 'г. Екатеринбург, ул. Малышева, д. 30', '2000-09-27', 'LR1005'),
 ('Марат Кадыров', 'marat.k0575@gmail.com', '+79678901234', '2024-08-12', 'г. Казань, ул. Баумана, д. 22', '2006-12-30', 'LR1006');
-![img_1.png](img_1.png)
+![img_1.png](img/img_1.png)
 INSERT INTO Author (name, birth_date, country)
 VALUES
 ('Лев Толстой', '1828-09-09', 'Россия'),
@@ -116,7 +116,7 @@ VALUES
 ('Александр Пушкин', '1799-06-06', 'Россия'),
 ('Михаил Булгаков', '1891-05-15', 'Россия'),
 ('Джордж Оруэлл', '1903-06-25', 'Великобритания');
-![img_5.png](img_5.png)
+![img_5.png](img/img_5.png)
 INSERT INTO Genre (name, description)
 VALUES
 ('Роман', 'Крупное повествовательное произведение'),
@@ -124,7 +124,7 @@ VALUES
 ('Классика', 'Произведения, признанные классическими'),
 ('Поэзия', 'Стихотворные произведения'),
 ('Детектив', 'Произведения о расследовании преступлений');
-![img_6.png](img_6.png)
+![img_6.png](img/img_6.png)
 INSERT INTO Book (title, isbn, publication_year, shelf_location, pages)
 VALUES
 ('Война и мир', '978-5-699-12014-7', 2010, 'A15', 1225),
@@ -137,7 +137,7 @@ VALUES
 ('Маленький принц', '978-5-699-75554-8', 2020, 'K07', 96),
 ('Атлант расправил плечи', '978-5-389-07423-0', 2019, 'L15', 1168),
 ('Гарри Поттер и Тайная комната', '978-5-389-07423-0', 2019, 'C09', 480);
-![img_4.png](img_4.png)
+![img_4.png](img/img_4.png)
 
 INSERT INTO Reservation (reader_id, book_id, reservation_date, status)
 VALUES
@@ -146,7 +146,7 @@ VALUES
 (5, 6, '2025-02-15', 'Active'),
 (2, 7, '2025-02-10', 'Active'),
 (4, 1, '2024-02-05', 'Cancelled');
-![img_3.png](img_3.png)
+![img_3.png](img/img_3.png)
 
 --UPDATE - запросы
 
@@ -157,7 +157,7 @@ address = 'г. Санкт-Петербург, ул. Садовая, д. 25'
 WHERE reader_id = 2;
 
 UPDATE Reader SET address = 'г. Москва, ул. Тверская, д. 15' WHERE reader_id = 1;
-![img.png](img.png)
+![img.png](img/img.png)
 UPDATE Reservation SET
 status = 'Fulfilled'
 WHERE reader_id = 3 AND book_id = 3;
@@ -165,4 +165,4 @@ WHERE reader_id = 3 AND book_id = 3;
 UPDATE Reservation SET
 reservation_date = '2025-03-01'
 WHERE reader_id = 5 AND book_id = 6;
-![img_2.png](img_2.png)
+![img_2.png](img/img_2.png)
