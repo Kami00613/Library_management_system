@@ -145,3 +145,7 @@ WHERE reader_id = 3 AND book_id = 3;
 UPDATE Reservation SET
                        reservation_date = '2025-03-01'
 WHERE reader_id = 5 AND book_id = 6;
+
+ALTER TABLE Book
+    ADD COLUMN publisher_id INT REFERENCES Publisher(publisher_id);
+
